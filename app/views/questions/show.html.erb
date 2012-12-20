@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="bubble">
+	<div class="container-fluid">
+		<div class="row-fluid center">
+			<div class="span 10" offset1">
+				<h1><b><%= @question.content %></b></h1>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="container-fluid">
+	<div class="row-fluid center">
+		<div class="span6 offset0">
+			<div class="bubble">
+				<%= render @question.choices[0] %>
+<br>
+<br>
+<br>
+				<%= @question.choices[0].description %>
+<br>
+<br>
+					<%= render @question.choices[0].comments %>
+			</div>
+		</div>
+		<div class="span6 offset0">
+			<div class="bubble">
+				<%= render @question.choices[1] %>
+<br>
+<br>
+<br>
+				<%= @question.choices[1].description %>
+<br>
+<br>
+					<%= render @question.choices[1].comments %>
+					<div class="bubble">
+						<% link_to "Add Comment", new_comment_path(:choice_id => @question.choices[1].id) %>
+						<% button_to "Add Comment", {:controller => :comments, :action => :create, :choice => { :choice_id => @question.choices[1].id, :content => "testing... 123", :user_id => current_user.id}}, :class => "buttonTo btn" %>
+						<%= render 'comment_form' %>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

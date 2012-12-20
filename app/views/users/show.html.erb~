@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+  <div class="row">
+
+    <aside class="span4">
+		<% @user = current_user%>
+		<%= render @user%>  
+	</aside>
+
+    <div class="span8">
+		<div class="hero-unit" align="center">	
+			<h3>RECENT QUESTIONS</h3>
+		</div>
+		<%= render Question.find(:all) %>
+    </div>
+
+  </div> 
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

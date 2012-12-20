@@ -1,0 +1,21 @@
+<div class="bubble">
+	<div class="container-fluid">
+		<div class="row-fluid center">
+			<div class="span 12" offset0">
+				<h3><b><%= question.content %></b></h3>
+			</div>
+
+			<div class="span4 offset1">
+				<% choice = question.choices[0] %>
+					<%= button_to choice.content, {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
+					<i class="icon-thumbs-up"></i>  <%= choice.votes.length %>
+			</div>
+			<div class="span4 offset2">
+				<% choice = question.choices[1] %>
+					<%= button_to choice.content, {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
+					<i class="icon-thumbs-up"></i>  <%= choice.votes.length %>
+			</div>
+		</div>
+			<i><%= link_to "descriptions, discussions, and more...", question_path(question) %></i>
+	</div>
+</div>

@@ -1,4 +1,34 @@
 SoapBox::Application.routes.draw do
+
+  resources :dislikes
+
+
+  resources :likes
+
+
+  resources :comments
+
+
+  resources :votes
+  resources :choices
+  resources :questions
+  resources :users
+  resources :sessions
+
+  get 'choices/vote'
+  #map.connect '/choices/vote', :controller => 'choices', :action => 'vote'
+
+  root to: 'static_pages#home'
+
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/signup',  to: 'users#new'
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

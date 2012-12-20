@@ -1,0 +1,24 @@
+<div class="bubble">
+	<div class="span1" align="right">
+		<%= gravatar_for(comment.user, size: 15) %> 
+	</div>
+	<div class="span7" align="left">
+		<b><%= comment.user.username %></b>
+	</div>
+	<div class="span1" align="right">
+		<%= button_to "+", {:controller => :likes, :action => :create, :comment_id => comment.id}, :class => "smallButton btn-success" %>
+	</div>
+	<div class="span1" align="left">
+		<%= comment.likes.length %>
+	</div>
+	<div class="span1" align="right">
+		<%= button_to "-", {:controller => :dislikes, :action => :create, :comment_id => comment.id}, :class => "smallButton" %>
+	</div>
+	<div class="span1" align="left">
+		<%= comment.dislikes.length %>
+	</div>
+<br>
+<br>
+<br>	
+	<%= comment.content %>
+</div>
