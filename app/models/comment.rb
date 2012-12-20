@@ -6,4 +6,6 @@ class Comment < ActiveRecord::Base
   has_many :dislikes, dependent: :destroy 
 
   #validates :content, presence: true
+
+  default_scope order: 'comments.created_at DESC'
 end

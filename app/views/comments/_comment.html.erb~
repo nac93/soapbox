@@ -2,23 +2,20 @@
 	<div class="span1" align="right">
 		<%= gravatar_for(comment.user, size: 15) %> 
 	</div>
-	<div class="span7" align="left">
+	<div class="span8" align="left">
 		<b><%= comment.user.username %></b>
 	</div>
 	<div class="span1" align="right">
-		<%= button_to "+", {:controller => :likes, :action => :create, :comment_id => comment.id}, :class => "smallButton btn-success" %>
+		<%= button_to ["+", comment.likes.length], {:controller => :likes, :action => :create, :comment_id => comment.id}, :class => "smallButton" %>
 	</div>
-	<div class="span1" align="left">
-		<%= comment.likes.length %>
+	<div class="span1 offset1" align="right">
+		<%= button_to ["-", comment.dislikes.length], {:controller => :dislikes, :action => :create, :comment_id => comment.id}, :class => "smallButton" %>
 	</div>
-	<div class="span1" align="right">
-		<%= button_to "-", {:controller => :dislikes, :action => :create, :comment_id => comment.id}, :class => "smallButton" %>
+	<div class="span11" align="center">
+		<%= comment.content %>
 	</div>
-	<div class="span1" align="left">
-		<%= comment.dislikes.length %>
-	</div>
-<br>
-<br>
-<br>	
-	<%= comment.content %>
+	<br>
+	<br>
+	<br>	
+
 </div>

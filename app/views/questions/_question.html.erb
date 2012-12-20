@@ -1,19 +1,19 @@
 <div class="bubble">
 	<div class="container-fluid">
 		<div class="row-fluid center">
-			<div class="span 12" offset0">
+			<div class="span 11" offset0" align="center">
 				<h3><b><%= question.content %></b></h3>
 			</div>
-
-			<div class="span4 offset1">
+			<br>
+			<br>
+			<br>
+			<div class="span5 offset0" align="left">
 				<% choice = question.choices[0] %>
-					<%= button_to choice.content, {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
-					<i class="icon-thumbs-up"></i>  <%= choice.votes.length %>
+				<%= button_to [choice.content, " (",choice.votes.length,")"], {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
 			</div>
-			<div class="span4 offset2">
+			<div class="span5 offset1" align="right">
 				<% choice = question.choices[1] %>
-					<%= button_to choice.content, {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
-					<i class="icon-thumbs-up"></i>  <%= choice.votes.length %>
+				<%= button_to ["(",choice.votes.length,") ", choice.content], {:controller => :votes, :action => :create, :choice_id => choice.id}, :class => "buttonTo btn" %>
 			</div>
 		</div>
 		<i><%= link_to "descriptions, discussions, and more...", question_path(question) %></i>
