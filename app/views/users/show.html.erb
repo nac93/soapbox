@@ -3,12 +3,18 @@
   <div class="row">
 
     <aside class="span4">
-		<% @user = current_user%>
 		<%= render @user%>  
 	</aside>
 
     <div class="span8">
-		<%= render Question.find(:all) %>
+		<%= render @question %>
+		<%= will_paginate @question %>
+		<% if @user.questions.length == 0 %>
+			<div class="bubble">
+			It looks like you haven't posted any questions yet... <br><br>
+			What are you wondering?&#160;&#160;&#160;Ask it <%= link_to 'here', new_question_path %>
+			</div>
+		<% end %>
     </div>
 
   </div> 

@@ -85,6 +85,13 @@ p {
   line-height: 1.7em;
 }
 
+s1 {font-size:250%}
+s2 {font-size:200%}
+s3 {font-size:150%}
+s-1{font-size:70%}
+s-2{font-size:80%}
+s-3{font-size:90%}
+
 /* header */
 
 #logo {
@@ -255,6 +262,7 @@ aside {
 /* bubble */
 .bubble
 {
+
 	opacity: 1;
 	text-align: center;
 	background-color: #fff;

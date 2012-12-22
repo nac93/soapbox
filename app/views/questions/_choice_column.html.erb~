@@ -1,19 +1,7 @@
 <div class="bubble">			
-	<div class="span9 offset1" align="justify">
-		<%= render @choice %>
-	</div>
-	<div class="span2" align="left">
-		<i class="icon-thumbs-up"></i>  <%= @choice.votes.length %>
-	</div>
-	<div class="span11" align="center">
-		<align="center"><%= @choice.description%></align>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<%= render @choice %>
+	<%= @choice.description%>
+	<br  />
 	<%= render @choice.comments %>
 	<div class="bubble">
 		<%= render 'comment_form' %>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
-  before_filter :admin_user,     only: :destroy
+#  before_filter :admin_user,     only: :destroy
 
 #  # GET /users
 #  # GET /users.json
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 #  end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], :per_page => 20)
   end
 
 
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+	@question = @user.questions.paginate(page: params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -126,12 +127,12 @@ class UsersController < ApplicationController
   private
 
     def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      @this_user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@this_user)
     end
 
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
+#    def admin_user
+#      redirect_to(root_path) unless current_user.admin?
+#    end
 
 end

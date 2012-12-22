@@ -19,8 +19,8 @@ class QuestionsController < ApplicationController
 	@choice1 = @question.choices[1]
 #	@comment0 = @choice0.comments.build(:choice_id => @choice0.id, :user_id => current_user.id)
 #	@comment1 = @choice1.comments.build(:choice_id => @choice1.id, :user_id => current_user.id)
-	@comment0 = @choice0.comments.build()
-	@comment1 = @choice1.comments.build()
+#	@comment0 = @choice0.comments.build()
+#	@comment1 = @choice1.comments.build()
 
     respond_to do |format|
       format.html # show.html.erb
@@ -70,7 +70,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to @question, notice: params.inspect}#'Question was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,7 +86,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

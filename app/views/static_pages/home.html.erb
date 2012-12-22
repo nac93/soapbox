@@ -2,12 +2,26 @@
 
   <div class="row">
     <aside class="span4">
+		<div class="hero-unit">
 		<% @user = current_user%>
-		<%= render @user%>
+		<% render @user%>
+		<% User.all(limit:16).each do |user| %>
+			<%= link_to gravatar_for(user, size:35), user_path(user), onmouseover: "alert(user.username)" %>
+
+		<% end %>
+<br>
+<br>
+<br>	
+<br>
+<br>
+<br>
+<br>
+		</div>
     </aside>
 
     <div class="span8">
-		<%= render Question.find(:all) %>
+		<%= render @question %>
+		<%= will_paginate @question %>
     </div>
   </div>  
 

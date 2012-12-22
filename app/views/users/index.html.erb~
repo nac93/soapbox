@@ -7,7 +7,7 @@
 <% @users.each do |user| %>
   <tr>
 	<td><%= gravatar_for(user, size:40) %>
-    <td><%= link_to user.username, user_path(user) %></td>
+    <td><h3><%= link_to user.username, user_path(user) %></h3></td>
   </tr>
 <% end %>
 </table>
