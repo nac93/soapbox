@@ -17,7 +17,7 @@
 		</div>
 		<div class="span3 offset0" align="left">
 			<% if question.user == current_user %>
-				<%= gravatar_for(question.user, size:15) %><%= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<%= gravatar_for(question.user, size:15) %><%= link_to '*Delete Question*', question, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<% else %>
 				<%= link_to gravatar_for(question.user, size:15), user_path(question.user) %><%= link_to question.user.username, user_path(question.user) %>
 			<% end %>
